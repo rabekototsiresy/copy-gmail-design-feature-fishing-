@@ -56,7 +56,7 @@ class Activity extends Component {
 
               <Grid
               container
-              direction="ROW"
+              direction="row"
               //justify="center"
               //alignItems="center"
               spacing={0}
@@ -109,7 +109,6 @@ class Activity extends Component {
 
 
             </Grid>
-
 
           </div>
         </Fullscreen>

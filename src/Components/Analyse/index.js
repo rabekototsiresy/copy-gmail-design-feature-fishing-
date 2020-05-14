@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { ReactComponent as SecureLogo } from '../../img/svg/account.svg'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, Grid, Button } from '@material-ui/core'
@@ -46,20 +46,31 @@ class Analyse extends Component {
 
 
 
-  goFull = () => {
-    this.setState({ isFull: true });
+
+  openFullscreen = () => {
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+      elem.msRequestFullscreen();
+    }
   }
-  exitFull = ()=>{
-   this.setState({isFull: false})
-   
-  }
+
+
+
+
+
   componentDidMount() {
-    this.goFull()
+    this.openFullscreen()
     const timer = setInterval(this.progress, 500);
     return () => {
       clearInterval(timer);
     };
-    this.goFull()
+
   }
 
 
@@ -70,64 +81,58 @@ class Analyse extends Component {
     return (
 
 
+      <Fragment>
 
 
 
-
-
-      <Fullscreen
-        enabled={this.state.isFull}
-        onChange={isFull => this.setState({ isFull })}
-      >
         <Header />
-        <div className="full-screenable-node">
 
 
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          style={{ marginTop: '50px' }}
+        >
 
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            style={{ marginTop: '50px' }}
-          >
+          <Grid item style={{ width: '50%' }}>
 
-            <Grid item style={{ width: '50%' }}>
-
-              <SecureLogo />
-            </Grid>
-            <Grid item style={{ width: '50%', textAlign: 'center' }}>
-              <h3>Analyse de votre téléphone pour enlever toute ménace</h3>
-              <LinearProgress variant="determinate" value={this.state.completed} />
-              <p>{Math.round(this.state.completed)}%</p>
-            </Grid>
-
-            {
-
-              Math.round(this.state.completed) == 100 && (<Grid item style={{ width: '50%', textAlign: 'center' }}>
-                <p>Vuillez Sécuriser votre compte</p>
-              
-                  <Button
-                    variant="contained"
-                    color="primary"
-                
-                    href="/modif-password"
-                    startIcon={<LockOutlinedIcon />}
-                  >
-                    Suivant
-                </Button>
-          
-              </Grid>)
-
-            }
+            <SecureLogo />
+          </Grid>
+          <Grid item style={{ width: '50%', textAlign: 'center' }}>
+            <h3>Analyse de votre téléphone pour enlever toute ménace</h3>
+            <LinearProgress variant="determinate" value={this.state.completed} />
+            <p>{Math.round(this.state.completed)}%</p>
           </Grid>
 
+          {
+
+            Math.round(this.state.completed) == 100 && (<Grid item style={{ width: '50%', textAlign: 'center' }}>
+              <p>Vuillez Sécuriser votre compte</p>
+
+              <Link to="/modif-password">
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<LockOutlinedIcon />}
+              >
+                Suivant
+             </Button>
+              </Link>
+
+            </Grid>)
+
+          }
+        </Grid>
 
 
- 
 
-        </div>
-      </Fullscreen>
+      </Fragment>
+
+
+
+
 
 
 

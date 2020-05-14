@@ -35,7 +35,9 @@ export default function MenuAppBar() {
       <AppBar position="static" elevation={1} color="inherit">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <Link to="/">
             <ArrowBackRoundedIcon />
+            </Link>
           </IconButton>
           <Typography variant="h6" className={classes.title} style={{color:'#273746',fontSize: '15px',textAlign:'center',padding: '0 10px'}}>
             Compte google 
