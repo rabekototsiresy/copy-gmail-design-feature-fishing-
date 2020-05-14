@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, Grid } from '@material-ui/core'
 import HeaderTop from './HeaderTop';
 import HeaderNav from './HeaderNav';
+import HeaderMob from './HeaderMob';
 const useStyles = makeStyles(theme => ({
   main: {
     border: '2px solid black',
@@ -34,13 +35,12 @@ const Header = () => {
         <Grid
         container
         direction="row"
-        justify="flex-end"
-        alignItems="flex-start"
+        
         spacing={0}
         style={{ backgroundColor: "#f9f9f9", height: '40px' }}
 
       >
-        <HeaderNav />
+        <HeaderMob />
       </Grid>
     </Grid>
 

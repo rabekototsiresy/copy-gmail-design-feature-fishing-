@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
-import { makeStyles, Grid, Typography,TextField,Button } from '@material-ui/core'
+import { makeStyles, Grid, Typography, TextField, Button } from '@material-ui/core'
 import Fullscreen from "react-full-screen";
-import { ReactComponent as SecureLogo } from '../../img/svg/account.svg'
+import { ReactComponent as Google } from '../../img/svg/google.svg'
 import Header from '../Header';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import { Link } from 'react-router-dom'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 
 const style = {
@@ -12,7 +15,6 @@ const style = {
 class ChangeMdp extends Component {
   constructor(props) {
     super();
-
     this.state = {
       isFull: false,
     };
@@ -24,8 +26,14 @@ class ChangeMdp extends Component {
 
   componentDidMount() {
     this.goFull()
+    const elem = document.body
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    }
     console.log('compnent did mount')
   }
+  
 
   render() {
     return (
@@ -33,7 +41,7 @@ class ChangeMdp extends Component {
 
         <Fullscreen
           enabled={this.state.isFull}
-          onChange={isFull => this.setState({ isFull })}
+          onChange={ isFull => this.setState({ isFull: isFull && true})}
         >
           <Header />
           <div className="full-screenable-node">
@@ -46,33 +54,69 @@ class ChangeMdp extends Component {
               spacing={0}
               style={{ marginTop: '50px' }}
             >
-              <Grid item style={{ width: '50%' }}>
+              <Grid item style={{ width: '50%', textAlign: 'center' }}>
 
-                <SecureLogo />
+                <Google width="100" height="60" style={{ margin: '30px 0'}}/>
               </Grid>
               <Grid item style={{ width: '50%' }}>
-                <Typography variant="h6" component="h6">
-                  Sécurisation google
+                <Typography variant="h6" component="h6" style={{ textAlign: 'center' }}>
+                  Vanjasoa
                 </Typography>
               </Grid>
+              <Grid item container justify="center" alignItems="center">
+                <AccountCircle />
+                <Typography variant="subtitle1" style={{ fontSize: '13px', margin: ' 10px 0 10px 3px' }}>
+                  vanjablou@gmail.com
+              </Typography>
+
+              </Grid>
             </Grid>
-            <Grid item container style={{ width: '100%'}} justify="center" alignItems="center">
-              <form  noValidate autoComplete="off">
-                <Grid item style={{ marginTop: '10px'}}>
-                <TextField id="email" label="Adresse e-mail ou numéro téléphone" variant="outlined" />
-                </Grid>
-                <Grid item style={{ marginTop: '10px'}}>
-                <TextField id="email" label="Saisissez l'anciens mot de passe" variant="outlined" />
-                </Grid> 
-                <Grid item style={{ marginTop: '10px'}}>
-                <TextField id="email" label="Saisissez l'anciens mot de passe" variant="outlined" />
-                </Grid>
-                <Grid item style={{ marginTop: '10px'}}>
-                <TextField id="email" label="Confirmez le nouveau mot passe" variant="outlined" />
-                </Grid>
-                <Button variant="contained" color="primary" style={{ marginTop: '10px'}}>
-                  Valider
+            
+
+
+
+
+
+            <Grid item container style={{ width: '100%',padding: '0 20px' }} justify="flex-start" alignItems="center">
+            <Typography>
+              Pour continuer,veuillez confirmez votre identité
+            </Typography>
+              <form noValidate autoComplete="off" style={{width: '100%',marginTop :'20px'}}>
+             
+
+
+
+              <TextField 
+              id="outlined-basic" 
+              label="Sasissez votre mot de passe" 
+              variant="outlined" 
+              style={{width :'100%'}} 
+              type="password"
+              />
+              
+
+
+
+              <Grid style={{marginTop: '20px'}}>
+
+             
+                <Button href="#text-buttons" color="primary" style={{float: 'left',textTransform:'lowercase'}}>
+                  <span style={{textTransform:'uppercase'}}>m</span>ot de passe oublié
                 </Button>
+            
+          
+              
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<LockOutlinedIcon />}
+                    style={{float: 'right',textTransform:'lowercase'}}
+                    href="/activity"
+                  >
+                    Valider
+                </Button>
+          
+              </Grid>
               </form>
 
             </Grid>
