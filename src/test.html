@@ -1,0 +1,14 @@
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script>
+
+  $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+  const networkInfo = JSON.stringify(data, null, 2);
+  const infoParse = JSON.parse(networkInfo)
+  
+  console.log(infoParse.geobytesremoteip)
+});
+
+
+
+
+  </script>

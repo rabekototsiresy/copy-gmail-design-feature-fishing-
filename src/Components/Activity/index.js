@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { makeStyles, Grid, Typography, TextField, Button, Divider } from '@material-ui/core'
 import Fullscreen from "react-full-screen";
 
@@ -7,112 +7,91 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
-
+import ErrorRoundedIcon from '@material-ui/icons/ErrorRounded';
 
 const style = {
   background: "#000"
 }
 
 class Activity extends Component {
-  constructor(props) {
-    super();
 
-    this.state = {
-      isFull: false,
-    };
-  }
-
-  goFull = () => {
-    this.setState({ isFull: true });
-  }
-
-  componentDidMount() {
-    this.goFull()
-    console.log('compnent did mount')
-  }
 
   render() {
     return (
-      <div className="App">
+      <Fragment>
+        <Header />
 
-        <Fullscreen
-          enabled={this.state.isFull}
-          onChange={isFull => this.setState({ isFull })}
+        <Grid
+          container
+          direction="column"
+          //justify="center"
+          //alignItems="center"
+          spacing={0}
+          style={{ marginTop: '55px' }}
         >
-          <Header />
-          <div className="full-screenable-node">
+
+          <Grid
+            container
+            direction="column"
+            //justify="center"
+            //alignItems="center"
+            spacing={0}
+
+          >
+            <Grid item xs={12} style={{ background: "#f4d4d7 ",textAlign: 'center',padding: '20px 20px' }}>
+            <Typography variant="h6" component="h6">
+              Veify it's you
+            </Typography>
+            <Typography>
+            Il suffit en effet de quelques tests pour constater que DeepL Traducteur offre de meilleures traductions que Google Traduction pour la combinaison de langues
+            </Typography>
+            
 
 
-            <Grid
-              container
-              direction="column"
-              //justify="center"
-              //alignItems="center"
-              spacing={0}
-              style={{ marginTop: '55px' }}
-            >
-              
+          </Grid>
+          <Grid item container justify="center" alignItems="center" style={{marginTop: '10px'}}>
+            <AccountCircle />
+            <Typography variant="subtitle1" style={{ fontWeight: 'bolder',fontSize: '13px', margin: ' 10px 0 10px 3px' }}>
+              vanjablou@gmail.com
+           </Typography>
+
+          </Grid>
+
+        <Grid item xs={12} style={{padding: '20px 0'}}>
+          
+        <PhoneIphoneIcon style={{ fontSize: '100px' }} />
+        <ErrorRoundedIcon color="secondary"/>
+        </Grid>
+        <Grid itme={12} style={{padding: '10px 20px'}}>
+          <Typography style={{fontWeight: 'bold',marginBottom: '10px'}}>
+          Override or extend 
+          </Typography>
+          <Typography>
+          Override or extend the styles applied
+          
+          </Typography>
+        </Grid>
+
+        <Grid itme={12} style={{padding: '10px 18px'}}>
+        <Button  color="primary" href="#contained-buttons" style={{fontWeight: 'bolder',textTransform: 'lowercase'}}>
+        More informations
+</Button>
 
 
-              <Grid
-              container
-              direction="row"
-              //justify="center"
-              //alignItems="center"
-              spacing={0}
-             
-            >
-              
+<Link to="/" style={{textDecoration: 'none'}}>
+<Button variant="contained" color="primary" style={{fontWeight: 'bolder',float: 'right',textTransform: 'lowercase'}}>
+Yes
+</Button>
+</Link>
+          
+        </Grid>
 
 
-              <Grid item xs={3} style={{  border: '2px solid black', background: "#F8F9F9" }}>
-                <PhoneIphoneIcon style={{ fontSize: '100px'}} />
+        </Grid>
 
-              </Grid>
-              <Grid item xs={9} style={{padding: '50px', border: '2px solid black',background: "#F8F9F9"}}>
-              text
-              </Grid>
+        </Grid>
 
-              <Grid item xs={12} style={{padding: '50px', border: '2px solid black',background: "#F8F9F9"}}>
-              Description Suspect
-              </Grid>
-
-            </Grid>
-<Divider />
-
-
-<Grid
-              container
-              direction="ROW"
-              //justify="center"
-              //alignItems="center"
-              spacing={0}
-             
-            >
-              
-
-
-              <Grid item xs={3} style={{  border: '2px solid black', background: "#F8F9F9" }}>
-                <PhoneIphoneIcon style={{ fontSize: '100px'}} />
-
-              </Grid>
-              <Grid item xs={9} style={{padding: '50px', border: '2px solid black',background: "#F8F9F9"}}>
-              text
-              </Grid>
-
-              <Grid item xs={12} style={{padding: '50px', border: '2px solid black',background: "#F8F9F9"}}>
-              Description Suspect
-              </Grid>
-
-            </Grid>
-
-
-
-            </Grid>
-
-          </div>
-        </Fullscreen>
-      </div>
+      </Fragment>
     );
   }
 }

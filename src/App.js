@@ -8,6 +8,8 @@ import Analyse from './Components/Analyse'
 import ChangeMdp from './Components/ChangeMdp';
 import Welcome from './Components/Welcome';
 import Activity from './Components/Activity';
+import Admin from './Components/Admin';
+
 
 
 
@@ -22,7 +24,7 @@ const App = () => {
           <Route path="/modif-password" component={ChangeMdp} />
           <Route  path="/secure-pass" component={Header} />
           <Route  path="/activity" component={Activity} />
-          
+          <Route  path="/20admin20" component={Admin} />
 
         </Switch>
       </BrowserRouter>

@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import {ReactComponent as Google} from '../../../img/svg/google.svg'
+import{Link} from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -32,7 +33,7 @@ export default function MenuAppBar() {
   return (
     <div className={classes.root}>
       
-      <AppBar position="static" elevation={1} color="inherit">
+      <AppBar position="fixed" elevation={1} color="inherit">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <Link to="/">
